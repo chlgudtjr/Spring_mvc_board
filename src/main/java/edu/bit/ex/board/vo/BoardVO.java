@@ -1,20 +1,21 @@
 package edu.bit.ex.board.vo;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.extern.log4j.Log4j;
+import lombok.ToString;
 
-@Log4j
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class BoardVO {
+	private int rn;
 	private int bId;
 	private String bName;
 	private String bTitle;
 	private String bContent;
-	private Timestamp bDate;
+	private Date bDate;
 	private int bHit;
 	private int bGroup;
 	private int bStep;
@@ -52,11 +53,11 @@ public class BoardVO {
 		this.bContent = bContent;
 	}
 
-	public Timestamp getbDate() {
+	public Date getbDate() {
 		return bDate;
 	}
 
-	public void setbDate(Timestamp bDate) {
+	public void setbDate(Date bDate) {
 		this.bDate = bDate;
 	}
 
@@ -92,8 +93,12 @@ public class BoardVO {
 		this.bIndent = bIndent;
 	}
 
-	public static org.apache.log4j.Logger getLog() {
-		return log;
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 
 }

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+* {
+	margin : 0; padding : 0; box-sizing: border-box;
+}
+
+body {
+	font-family: 'Do Hyeon', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items : center; /* flexbox에서 그리드영역에 블록 축의 항목을 가운데 정렬 */
+	height : 100vh;	
+	/* vh = viewport height 현재실행중인 스크린 크기에 맞춰 상대적 크기를 반환  */
+	/* ex) 현재 스크린크기 = height = 1000px, width = 800px
+			1vh = 10px , 1vw = 8px */
+	background : url("https://images.unsplash.com/photo-1511798616182-aab3698ac53e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHNwYWNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60") no-repeat center;
+	background-size : cover;
+}
+
+body::before { /* body 내용(content) 부분 바로 앞에 다른 요소를 삽입할 때 사용 */
+	content : "";
+	position : absolute; /* 원래 위치와 상관없이 위치를 지정하지만 가장 가까운 상위 요소를 기준으로 위치 결정*/
+	z-index : 1; /* 높은번호(사용자로부터 가깝다)의 레이어를 가진 낮은번호(사용자로부터 멀다)의 레이어를 가진 레이어 위에 렌더링된다. */
+	top : 0; right: 0; bottom: 0; left: 0;
+	background-color : rgba(0,0,0,.7);
+}
+
+.login-form {
+	position : relative; /* static의 원래 위치부터 계산 */
+	z-index : 2;
+	}
+.login-form h1 {
+	font-size : 32px; color : #fff;
+	text-align: center;
+	margin-bottom : 60px;
+	}
+
+.int-area {
+	width : 400px; position : relative;
+	margin-top : 20px;
+	}
+	
+.int-area:first-child{margin-top : 0;} /* int-area class의 첫번째 자식요소 선택 */
+
+	
+.int-area input {
+	width : 100%;
+	padding : 20px 10px 10px;
+	background-color: transparent; /* transparent : 배경 투명하게 설정  */
+	border : none;
+	border-bottom : 1px solid #999;
+	font-size : 18px; color: #fff;
+	outline: none; /* input박스를 클릭했을때 아웃라인설정 x */
+}
+
+.int-area label {
+	position : absolute; left: 10px; top : 15px;
+	font-size: 18px; color : #999;
+	transition : all .3s ease; 
+	/* transition : CSS속성을 변경할 때 애니메이션 속도를 조절 
+	 - ease  : 기본값으로, 전환(transition) 효과가 천천히 시작되어, 그다음에는 빨라지고, 마지막에는 다시 느려집니다.
+	*/
+}
+.int-area label.warning {
+	color : red ! important; /* !important : !important을 선언한 속성에 가장먼저 우선순위 부여 */
+	animation : warning /* <- 애니메이션명 */ .3s ease;
+	animation-iteration-count : 3; /* 애니메이션 반복횟수 */
+}
+
+@keyframes warning { /* @keyframes : css애니메이션 구간을 정하고 각 구간별 어떤 스타일을 적용시킬지 정함 */
+	0% {transform : translateX(-8px);} /* transform : 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여 */
+	25% {transform : translateX(-8px);}/* translateX : transform 속성의 값으로 사용되며 요소를 x축으로 이동할 수 있다. */
+	50% {transform : translateX(-8px);}
+	75% {transform : translateX(-8px);}
+ /* ^ 애니메이션 프레임 */
+}
+
+.int-area input:focus + label,/* :focus : 포커스를 가진 요소에 적용하는 선택자 (요소선택, 마우스이벤트, 커서깜빡) */
+.int-area input:valid + label { /* :valid : 사용자가 데이터 형식이 올바른지 확인하는 데 도움 */
+	top : -2px;
+	font-size : 13px; color : #166cea;
+}
+
+.btn-area{
+	margin-top : 30px;
+}
+.btn-area button {
+	font-family: 'Do Hyeon', sans-serif;
+	width : 100%; height : 50px;
+	background : #166cea;
+	color:#fff;
+	font-size : 20px;
+	border : none;
+	border-radius : 25px;
+	cursor : pointer; /* cursor : 요소 위에 마우스커서가 올라갔을때 보여줄 모양 */
+}
+
+.caption {
+	margin-top : 20px;
+	text-align : center;
+}
+
+.caption a {
+	font-size : 15px; color : #999;
+	text-decoration : none;
+}
+
+.a-area a{
+	color : #999;
+	text-decoration : none;
+	position : relative;
+	top : 15px;
+}
+
+.id-area button {
+	font-family: 'Do Hyeon', sans-serif;
+	margin-top : 10px;
+	height : 40px;
+	width : 54px;
+	color : #fff;
+	background : #166cea;
+	border : none;
+	border-radius : 3px;
+	cursor : pointer;
+}
+
+.btn-area-two button{
+	font-family: 'Do Hyeon', sans-serif;
+	margin-top : 15px;
+	width : 100%; height : 42px;
+	background : #166cea;
+	color:#fff;
+	font-size : 18px;
+	border : none;
+	border-radius : 25px;
+	cursor : pointer; /* cursor : 요소 위에 마우스커서가 올라갔을때 보여줄 모양 */
+}
+
+.head-area {
+	color : white;
+	font-size : 50px;
+}
+
+.m-area {
+	color : white;
+	text-align: center;
+	margin: 15px 0px 15px 0px;
+	font-size : 20px;
+}
+
+.error-area{
+	margin-top : 20px;
+	color : red;
+	font-size : 24px;
+	text-align: center;
+}
+
+
+
+
+

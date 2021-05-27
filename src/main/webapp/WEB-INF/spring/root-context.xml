@@ -32,7 +32,7 @@
 	<!-- 1.번방법을 위하여 mapperLocations 을 추가 함 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" />
+		<property name="mapperLocations" value="classpath*:/edu/bit/ex/board/mapper/*.xml" />
 	</bean>
 	
 	<!-- 1번 방식 사용을 위한 sqlSession -->

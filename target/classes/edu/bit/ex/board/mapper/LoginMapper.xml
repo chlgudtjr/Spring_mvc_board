@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.bit.ex.board.mapper.LoginMapper">
+		
+	<!-- 회원 상세 정보 -->
+	<select id="getMember" resultType="edu.bit.ex.board.vo.MemberVO">
+	<![CDATA[
+		select m.m_id, m_pw, enabled, a.authorities from mvc_member m, mvc_auth a where m.m_id = #{m_id} and a.authorities = m.authorities
+	]]>
+	</select>
+	
+	<select id="getAuth" resultType="edu.bit.ex.board.vo.AuthVO">
+	<![CDATA[
+		select * from mvc_auth where m_id = #{m_id}
+	]]>
+	</select>
+
+	<!-- id 중복체크 -->
+	<select id="idChk" resultType="int">
+	<![CDATA[
+		select count(*) from mvc_member where m_id=#{m_id}
+	]]>
+	</select>
+	
+	<!-- 회원가입 등록처리 -->
+	<insert id="addMbr">
+	<![CDATA[
+		insert into mvc_member (m_id, m_pw, enabled) values (#{m_id}, #{m_pw}, 1)
+	]]>
+	</insert>
+	
+	<!-- 회원 상세 정보 -->
+	<select id="getMemberList" resultType="edu.bit.ex.board.vo.MemberVO">
+	<![CDATA[
+		select m_id, m_pw, authorities from mvc_member order by m_id desc
+	]]>
+	</select>
+	
+	<!-- 회원 상세 정보 -->
+	<delete id="getMemberDelete">
+	<![CDATA[
+		delete from mvc_member where m_id = #{m_id}
+	]]>
+	</delete>
+
+	
+
+</mapper>
